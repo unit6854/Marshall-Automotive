@@ -112,6 +112,7 @@ collections:
           - { name: body_1, label: "Paragraph 1", widget: text }
           - { name: body_2, label: "Paragraph 2", widget: text }
           - { name: body_3, label: "Paragraph 3", widget: text }
+          - { name: values_image, label: "What We Stand For Background", widget: image }
           - { name: signature, label: "Signature", widget: string }
           - { name: owner, label: "Owner Line", widget: string }
           - name: values
