@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import BookingForm from '../components/BookingForm.astro';
+import FaqList from '../components/FaqList.astro';
+import settings from '../data/settings.json';
+import home from '../data/home.json';
+---
+
+<BaseLayout title="Book An Appointment | Marshall Automotive LLC" description="Request an appointment or a drop-off time with Marshall Automotive LLC in Hermitage, TN.">
+  <section class="page-hero" style={`background-image:url('${home.hero_image}')`}>
+    <div class="container">
+      <p class="eyebrow">Appointments & Drop-Offs</p>
+      <h1>Book Your Visit</h1>
+      <p>Tell us about your vehicle and when you'd like to bring it in. We'll call you back to confirm a time that works.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="align-items:start; grid-template-columns:1.35fr 1fr;">
+        <BookingForm />
+
+        <div>
+          <div class="panel panel--green-edge">
+            <h2 style="font-size:1.4rem">Prefer To Call?</h2>
+            <div class="rule"></div>
+            <p style="color:var(--muted); font-size:0.95rem;">
+              Marshall and the team are happy to talk it through. Call during shop hours and we'll get you on the schedule.
+            </p>
+            <a class="btn btn--sm btn--solid" href={settings.phone_link} style="margin-top:8px;">
+              {settings.phone}
+              <span class="btn-arrow"><Icon name="phone" size={18} /></span>
+            </a>
+          </div>
+
+          <div class="panel panel--green-edge" style="margin-top:22px;">
+            <h2 style="font-size:1.4rem">Shop Hours</h2>
+            <div class="rule"></div>
+            <ul class="hours-list">
+              {
+                settings.hours.map((h) => (
+                  <li>
+                    <span class="day">{h.days}</span>
+                    <span class="time">{h.time}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="panel panel--green-edge" style="margin-top:22px;">
+            <h2 style="font-size:1.4rem">Drop-Off Location</h2>
+            <div class="rule"></div>
+            <ul class="footer-contact">
+              <li>
+                <Icon name="pin" size={20} />
+                <span>{settings.address_line1}<br />{settings.address_line2}</span>
+              </li>
+            </ul>
+            <a class="btn btn--sm" href={settings.map_url} target="_blank" rel="noopener">
+              Get Directions
+              <span class="btn-arrow"><Icon name="chevron" size={18} /></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="background:#0a0a0a;">
+    <div class="container">
+      <h2 style="font-size:clamp(1.6rem,2.6vw,2.2rem)">Drop-Off Questions</h2>
+      <div class="rule"></div>
+      <FaqList />
+    </div>
+  </section>
+</BaseLayout>

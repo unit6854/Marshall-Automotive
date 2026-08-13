@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import Hex from '../components/Hex.astro';
+import CtaBand from '../components/CtaBand.astro';
+import FaqList from '../components/FaqList.astro';
+import servicesData from '../data/services.json';
+import home from '../data/home.json';
+---
+
+<BaseLayout title="Services | Marshall Automotive LLC" description="Engine diagnostics, brakes, oil changes, tires, transmission, suspension, and A/C service in Hermitage, TN.">
+  <section class="page-hero" style={`background-image:url('${home.hero_image}')`}>
+    <div class="container">
+      <p class="eyebrow">Complete Automotive Care</p>
+      <h1>{servicesData.title}</h1>
+      <p>{servicesData.intro}</p>
+    </div>
+  </section>
+
+  <section class="section services">
+    <div class="container">
+      <div class="grid-2" style="align-items:stretch; grid-template-columns:1fr 1fr;">
+        {
+          servicesData.services.map((s) => (
+            <article class="service-detail">
+              <Hex icon={s.icon} size={26} />
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.description}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="background:#0a0a0a;">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Common Questions</h2>
+          <p class="section-sub">Straight answers before you drop off.</p>
+        </div>
+        <a class="btn btn--sm" href="/contact">
+          Ask Us Anything
+          <span class="btn-arrow"><Icon name="chevron" size={18} /></span>
+        </a>
+      </div>
+      <FaqList limit={4} />
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

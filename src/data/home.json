@@ -1,0 +1,62 @@
+{
+  "hero_image": "/images/hero-bg.webp",
+  "hero_eyebrow": "Honest Work. Real Results.",
+  "hero_title_line1": "Built To",
+  "hero_title_line2": "Perform.",
+  "hero_text_line1": "Trusted auto repair in Hermitage, TN.",
+  "hero_text_line2": "Quality work. Fair prices. Every time.",
+  "hero_button_label": "Schedule Appointment",
+  "hero_button_link": "/booking",
+
+  "features": [
+    {
+      "icon": "technician",
+      "title": "Expert Technicians",
+      "text": "Skilled, experienced, and dedicated to getting the job done right."
+    },
+    {
+      "icon": "shield",
+      "title": "Honest & Reliable",
+      "text": "Straightforward advice and fair pricing you can count on."
+    },
+    {
+      "icon": "gear",
+      "title": "Quality Parts",
+      "text": "We use quality parts and equipment for dependable long-lasting results."
+    },
+    {
+      "icon": "stopwatch",
+      "title": "Fast Turnaround",
+      "text": "We respect your time and work hard to get you back on the road."
+    }
+  ],
+
+  "services_heading": "Our Services",
+  "services_subheading": "Complete automotive care for every mile ahead.",
+  "services_button_label": "View All Services",
+
+  "why_heading": "Why Choose Us?",
+  "why_points": [
+    "Local, family-owned business",
+    "Honest recommendations",
+    "Quality workmanship",
+    "Customer satisfaction guaranteed"
+  ],
+  "why_image": "/images/engine-work.webp",
+
+  "about_heading": "About Marshall Automotive LLC",
+  "about_text": "At Marshall Automotive LLC, we treat your vehicle like our own. With years of experience and a commitment to honest service, we make sure you're always taken care of.",
+  "about_signature": "Marshall",
+  "about_owner": "Marshall, Owner",
+
+  "visit_heading": "Visit Us",
+  "visit_button_label": "Get Directions",
+
+  "testimonials_heading": "What Our Customers Say",
+  "testimonials_image": "/images/ss-grille.webp",
+
+  "cta_line1": "Ready To Get Your",
+  "cta_line2": "Car Back To 100%?",
+  "cta_text": "Contact us today to schedule your appointment.",
+  "cta_button_label": "Schedule Online"
+}

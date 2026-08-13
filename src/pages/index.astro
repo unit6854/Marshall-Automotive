@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import Hex from '../components/Hex.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CtaBand from '../components/CtaBand.astro';
+import settings from '../data/settings.json';
+import home from '../data/home.json';
+import servicesData from '../data/services.json';
+
+const services = servicesData.services.slice(0, 8);
+---
+
+<BaseLayout>
+  <!-- ================= HERO ================= -->
+  <section class="hero" style={`background-image:url('${home.hero_image}')`}>
+    <div class="container">
+      <div class="hero-inner">
+        <p class="eyebrow">{home.hero_eyebrow}</p>
+        <h1>
+          {home.hero_title_line1}
+          <span class="line-2">{home.hero_title_line2}</span>
+        </h1>
+        <p class="hero-copy">
+          <span>{home.hero_text_line1}</span>
+          <span>{home.hero_text_line2}</span>
+        </p>
+        <a class="btn" href={home.hero_button_link}>
+          {home.hero_button_label}
+          <span class="btn-arrow"><Icon name="chevron" size={18} /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURE STRIP ================= -->
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        {
+          home.features.map((f) => (
+            <div class="feature">
+              <Icon name={f.icon} size={54} stroke={1.5} />
+              <div>
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="section services">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>{home.services_heading}</h2>
+          <p class="section-sub">{home.services_subheading}</p>
+        </div>
+        <a class="btn btn--sm" href="/services">
+          {home.services_button_label}
+          <span class="btn-arrow"><Icon name="chevron" size={18} /></span>
+        </a>
+      </div>
+
+      <div class="service-grid">
+        {
+          services.map((s) => (
+            <a class="service-card" href="/services">
+              {s.image && <img class="card-img" src={s.image} alt="" loading="lazy" />}
+              <span class="service-card-label">
+                <Hex icon={s.icon} size={26} />
+                <h3>{s.title}</h3>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US / ABOUT / VISIT ============ -->
+  <section class="split">
+    <div class="split-half split-left">
+      <div class="why-pane">
+        <h2>{home.why_heading}</h2>
+        <div class="rule"></div>
+        <ul class="why-list">
+          {
+            home.why_points.map((p) => (
+              <li>
+                <Icon name="check" size={20} />
+                <span>{p}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="angled-image">
+        <svg class="edge" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="16" y1="0" x2="0" y2="100" />
+        </svg>
+        <img src={home.why_image} alt="Technician tools on a workbench at Marshall Automotive" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="split-half split-right">
+      <div class="about-pane">
+        <h2>{home.about_heading}</h2>
+        <div class="rule"></div>
+        <p>{home.about_text}</p>
+        <div class="signature">{home.about_signature}</div>
+        <div class="owner-line">{home.about_owner}</div>
+      </div>
+
+      <div class="visit-pane">
+        <h2>{home.visit_heading}</h2>
+        <div class="visit-row">
+          <Icon name="pin-solid" size={34} />
+          <address>
+            {settings.address_line1}<br />
+            {settings.address_line2}
+          </address>
+        </div>
+        <a class="btn btn--sm" href={settings.map_url} target="_blank" rel="noopener">
+          {home.visit_button_label}
+          <span class="btn-arrow"><Icon name="chevron" size={18} /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <Testimonials />
+
+  <!-- ================= CTA ================= -->
+  <CtaBand />
+</BaseLayout>

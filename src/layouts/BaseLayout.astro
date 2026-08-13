@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import settings from '../data/settings.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = `${settings.business_name} | Auto Repair in Hermitage, TN`,
+  description = `Honest, high-quality auto repair in Hermitage, TN. Call ${settings.phone} to schedule with ${settings.business_name}.`,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'AutoRepair',
+        name: settings.business_name,
+        telephone: settings.phone,
+        email: settings.email,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: settings.address_line1,
+          addressLocality: 'Hermitage',
+          addressRegion: 'TN',
+          postalCode: '37076',
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: settings.yelp_rating,
+          bestRating: '5',
+          reviewCount: '30',
+        },
+      })}
+    />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

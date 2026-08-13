@@ -1,0 +1,93 @@
+---
+import Icon from './Icon.astro';
+import contact from '../data/contact.json';
+
+const years = Array.from({ length: 40 }, (_, i) => new Date().getFullYear() + 1 - i);
+---
+
+<div class="panel panel--green-edge">
+  <h2>{contact.form_heading}</h2>
+  <div class="rule"></div>
+
+  <!--
+    Mock UI only. Netlify form attributes are present so the infrastructure is
+    prepped, but there is no backend, email routing, or database wired up.
+  -->
+  <form
+    name="appointment"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    action="/thanks"
+  >
+    <input type="hidden" name="form-name" value="appointment" />
+    <p class="hp">
+      <label>Don’t fill this out: <input name="bot-field" /></label>
+    </p>
+
+    <div class="form-grid">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required />
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+      </div>
+
+      <div class="field field--full">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required />
+      </div>
+
+      <div class="field">
+        <label for="vehicle-year">Vehicle Year</label>
+        <select id="vehicle-year" name="vehicle_year" required>
+          <option value="">Select year</option>
+          {years.map((y) => <option value={y}>{y}</option>)}
+          <option value="older">Older</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="vehicle-make">Vehicle Make</label>
+        <input id="vehicle-make" name="vehicle_make" type="text" placeholder="Ford, Toyota, Chevrolet…" required />
+      </div>
+
+      <div class="field field--full">
+        <label for="vehicle-model">Vehicle Model</label>
+        <input id="vehicle-model" name="vehicle_model" type="text" placeholder="F-150, Camry, Silverado…" required />
+      </div>
+
+      <div class="field">
+        <label for="drop-date">Preferred Drop-Off Date</label>
+        <input id="drop-date" name="drop_off_date" type="date" />
+      </div>
+
+      <div class="field">
+        <label for="drop-time">Preferred Time</label>
+        <select id="drop-time" name="drop_off_time">
+          <option value="">No preference</option>
+          <option>Morning (8 AM – 11 AM)</option>
+          <option>Midday (11 AM – 2 PM)</option>
+          <option>Afternoon (2 PM – 5 PM)</option>
+        </select>
+      </div>
+
+      <div class="field field--full">
+        <label for="issue">Description of Issue</label>
+        <textarea id="issue" name="issue" placeholder="Tell us what the vehicle is doing — sounds, warning lights, when it started…" required></textarea>
+      </div>
+    </div>
+
+    <div style="margin-top:26px; display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <button class="btn btn--solid" type="submit">
+        {contact.form_button_label}
+        <span class="btn-arrow"><Icon name="chevron" size={18} /></span>
+      </button>
+    </div>
+
+    <p class="form-note">{contact.form_note}</p>
+  </form>
+</div>

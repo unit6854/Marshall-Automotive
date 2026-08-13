@@ -1,0 +1,25 @@
+{
+  "business_name": "Marshall Automotive LLC",
+  "tagline": "Hermitage, TN",
+  "logo": "/images/logo.webp",
+  "phone": "615-732-1894",
+  "phone_link": "tel:+16157321894",
+  "email": "marshallautomotivellc@gmail.com",
+  "address_line1": "4235 Lebanon Pike",
+  "address_line2": "Hermitage, TN 37076",
+  "map_url": "https://www.google.com/maps/dir/?api=1&destination=4235+Lebanon+Pike+Hermitage+TN+37076",
+  "yelp_url": "https://www.yelp.com/biz/marshall-automotive-hermitage",
+  "yelp_rating": "4.8",
+  "bbb_rating": "5-Star",
+  "facebook_url": "https://www.facebook.com/people/Marshallautomotivellc/100087675318535/?sk=photos",
+  "footer_blurb": "Providing honest, high-quality auto repair and maintenance services in Hermitage, TN and the surrounding areas.",
+  "hours": [
+    { "days": "Monday", "time": "8:00 AM - 5:00 PM" },
+    { "days": "Tuesday", "time": "8:00 AM - 5:00 PM" },
+    { "days": "Wednesday", "time": "8:00 AM - 5:00 PM" },
+    { "days": "Thursday", "time": "8:00 AM - 5:00 PM" },
+    { "days": "Friday", "time": "8:00 AM - 5:00 PM" },
+    { "days": "Saturday", "time": "By Appointment" },
+    { "days": "Sunday", "time": "Closed" }
+  ]
+}

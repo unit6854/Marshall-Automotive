@@ -1,0 +1,32 @@
+---
+import Icon from './Icon.astro';
+import settings from '../data/settings.json';
+import home from '../data/home.json';
+---
+
+<section class="cta-band" style={`background-image:url('${home.why_image}')`}>
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-text">
+        <h2>
+          {home.cta_line1}
+          <span class="line-2">{home.cta_line2}</span>
+        </h2>
+        <p>{home.cta_text}</p>
+      </div>
+
+      <div class="cta-actions">
+        <a class="btn-skew btn-skew--solid" href={settings.phone_link}>
+          <span><Icon name="phone" size={22} /></span>
+          <span>{settings.phone}</span>
+        </a>
+        <span class="cta-or">or</span>
+        <a class="btn-skew" href="/booking">
+          <span><Icon name="calendar" size={22} /></span>
+          <span>{home.cta_button_label}</span>
+          <span class="btn-arrow" style="color:var(--green-lt)"><Icon name="chevron" size={20} /></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

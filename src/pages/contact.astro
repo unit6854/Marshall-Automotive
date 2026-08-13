@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import settings from '../data/settings.json';
+import contact from '../data/contact.json';
+import home from '../data/home.json';
+---
+
+<BaseLayout title="Contact | Marshall Automotive LLC" description="Call 615-732-1894 or visit Marshall Automotive LLC at 4235 Lebanon Pike, Hermitage, TN 37076.">
+  <section class="page-hero" style={`background-image:url('${home.hero_image}')`}>
+    <div class="container">
+      <p class="eyebrow">Get In Touch</p>
+      <h1>{contact.title}</h1>
+      <p>{contact.intro}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="align-items:start;">
+        <div class="panel panel--green-edge">
+          <h2 style="font-size:1.5rem">Contact Details</h2>
+          <div class="rule"></div>
+          <ul class="footer-contact">
+            <li>
+              <Icon name="phone" size={20} />
+              <a href={settings.phone_link}>{settings.phone}</a>
+            </li>
+            <li>
+              <Icon name="mail" size={20} />
+              <a href={`mailto:${settings.email}`}>{settings.email}</a>
+            </li>
+            <li>
+              <Icon name="pin" size={20} />
+              <span>{settings.address_line1}<br />{settings.address_line2}</span>
+            </li>
+          </ul>
+
+          <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:22px;">
+            <a class="btn btn--sm btn--solid" href={settings.phone_link}>
+              Tap To Call
+              <span class="btn-arrow"><Icon name="phone" size={18} /></span>
+            </a>
+            <a class="btn btn--sm" href="/booking">
+              Book A Drop-Off
+              <span class="btn-arrow"><Icon name="chevron" size={18} /></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="panel panel--green-edge">
+          <h2 style="font-size:1.5rem">Shop Hours</h2>
+          <div class="rule"></div>
+          <ul class="hours-list">
+            {
+              settings.hours.map((h) => (
+                <li>
+                  <span class="day">{h.days}</span>
+                  <span class="time">{h.time}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:34px;">
+        <iframe
+          class="map-frame"
+          title="Map to Marshall Automotive LLC"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=4235%20Lebanon%20Pike%20Hermitage%20TN%2037076&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="background:#0a0a0a;">
+    <div class="container">
+      <h2 style="font-size:clamp(1.6rem,2.6vw,2.2rem)">Frequently Asked Questions</h2>
+      <div class="rule"></div>
+      <FaqList />
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

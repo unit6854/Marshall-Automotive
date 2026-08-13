@@ -1,0 +1,57 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { reviews } from '../lib/content';
+import settings from '../data/settings.json';
+import contact from '../data/contact.json';
+import home from '../data/home.json';
+---
+
+<BaseLayout title="Reviews | Marshall Automotive LLC" description="4.8 stars on Yelp and a 5-star Better Business Bureau rating. Read what Hermitage drivers say about Marshall Automotive LLC.">
+  <section class="page-hero" style={`background-image:url('${home.testimonials_image}')`}>
+    <div class="container">
+      <p class="eyebrow">Social Proof</p>
+      <h1>{contact.reviews_title}</h1>
+      <p>{contact.reviews_intro}</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="rating-badges">
+        <a class="badge" href={settings.yelp_url} target="_blank" rel="noopener">
+          <Icon name="yelp" size={34} class="icon-green" />
+          <span>
+            <span class="badge-score">{settings.yelp_rating}</span>
+            <span class="badge-label"> / 5 on Yelp</span>
+          </span>
+        </a>
+        <div class="badge">
+          <Icon name="shield" size={34} class="icon-green" />
+          <span>
+            <span class="badge-score">5</span>
+            <span class="badge-label"> Star BBB Rating</span>
+          </span>
+        </div>
+        <a class="badge" href={settings.facebook_url} target="_blank" rel="noopener">
+          <Icon name="facebook" size={34} class="icon-green" />
+          <span class="badge-label">See our work on Facebook</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="grid-3">
+        {reviews.map((r) => <ReviewCard review={r} />)}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+  <CtaBand />
+</BaseLayout>

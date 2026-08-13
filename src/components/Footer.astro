@@ -1,0 +1,77 @@
+---
+import Icon from './Icon.astro';
+import settings from '../data/settings.json';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="/" aria-label={`${settings.business_name} home`}>
+          <img src={settings.logo} alt={settings.business_name} width="420" height="139" />
+        </a>
+        <div class="brand-city">{settings.tagline}</div>
+        <p class="footer-blurb">{settings.footer_blurb}</p>
+        <div class="socials">
+          <a href={settings.facebook_url} target="_blank" rel="noopener" aria-label="Facebook">
+            <Icon name="facebook" size={18} />
+          </a>
+          <a href={settings.yelp_url} target="_blank" rel="noopener" aria-label="Yelp">
+            <Icon name="yelp" size={18} />
+          </a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=4235+Lebanon+Pike+Hermitage+TN+37076" target="_blank" rel="noopener" aria-label="Google">
+            <Icon name="google" size={18} />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/reviews">Reviews</a>
+          <a href="/services">Services</a>
+          <a href="/booking">Booking</a>
+          <a href="/about">About Us</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <ul class="footer-contact">
+          <li>
+            <Icon name="phone" size={18} />
+            <a href={settings.phone_link}>{settings.phone}</a>
+          </li>
+          <li>
+            <Icon name="mail" size={18} />
+            <a href={`mailto:${settings.email}`}>{settings.email}</a>
+          </li>
+          <li>
+            <Icon name="pin" size={18} />
+            <span>{settings.address_line1}<br />{settings.address_line2}</span>
+          </li>
+          <li>
+            <Icon name="clock" size={18} />
+            <span>Mon–Fri 8:00 AM – 5:00 PM<br />Sat by appointment</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="container">
+      <span>© {year} {settings.business_name}. All Rights Reserved.</span>
+      <span class="credit">Website by <span>YourWebPro</span></span>
+    </div>
+  </div>
+</footer>
+
+<a class="mobile-call" href={settings.phone_link}>
+  <Icon name="phone" size={20} />
+  <span>Call {settings.phone}</span>
+</a>

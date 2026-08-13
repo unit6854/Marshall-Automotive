@@ -1,0 +1,59 @@
+---
+import Icon from './Icon.astro';
+import settings from '../data/settings.json';
+
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+const links = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Reviews', href: '/reviews' },
+  { label: 'Booking', href: '/booking' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label={`${settings.business_name} home`}>
+      <img src={settings.logo} alt={settings.business_name} width="360" height="119" />
+      <span class="brand-city">{settings.tagline}</span>
+    </a>
+
+    <div class="nav-panel">
+      <span class="brand-cut" aria-hidden="true"></span>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main">
+        {
+          links.map((l) => (
+            <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>
+              {l.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <a class="call-btn" href={settings.phone_link}>
+        <Icon name="phone" size={22} />
+        <span>
+          <span class="call-label">Call Us Today</span>
+          <span class="call-number">{settings.phone}</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation">
+        <Icon name="menu" size={24} />
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('mainNav');
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

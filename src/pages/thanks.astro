@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import settings from '../data/settings.json';
+---
+
+<BaseLayout title="Request Received | Marshall Automotive LLC">
+  <section class="section" style="min-height:52vh; display:flex; align-items:center;">
+    <div class="container" style="text-align:center;">
+      <p class="eyebrow">Thank You</p>
+      <h1 style="font-size:clamp(2rem,4vw,3.2rem); margin-top:10px;">Request Received</h1>
+      <p style="max-width:52ch; margin:20px auto 0;">
+        Thanks for reaching out to {settings.business_name}. This is a demonstration site, so no message was
+        actually sent — on the live site we'd call you back to confirm your appointment.
+      </p>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:28px;">
+        <a class="btn btn--sm btn--solid" href={settings.phone_link}>
+          Call {settings.phone}
+          <span class="btn-arrow"><Icon name="phone" size={18} /></span>
+        </a>
+        <a class="btn btn--sm" href="/">
+          Back Home
+          <span class="btn-arrow"><Icon name="chevron" size={18} /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

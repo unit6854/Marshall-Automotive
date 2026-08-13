@@ -1,0 +1,54 @@
+{
+  "title": "Our Services",
+  "intro": "Complete automotive care for every mile ahead. From routine maintenance to complex diagnostics, Marshall Automotive LLC keeps Hermitage on the road.",
+  "services": [
+    {
+      "icon": "engine",
+      "title": "Engine Diagnostics",
+      "image": "",
+      "description": "Check engine light on? We pull the codes, test the systems, and explain exactly what your vehicle needs — no guesswork, no upselling."
+    },
+    {
+      "icon": "brake",
+      "title": "Brake Service",
+      "image": "",
+      "description": "Pads, rotors, calipers, lines, and fluid. We inspect the full braking system and only replace what is genuinely worn."
+    },
+    {
+      "icon": "oil",
+      "title": "Oil Changes",
+      "image": "",
+      "description": "Conventional, blend, or full synthetic with a quality filter, plus a courtesy inspection of belts, hoses, and fluid levels."
+    },
+    {
+      "icon": "tire",
+      "title": "Tires & Wheels",
+      "image": "",
+      "description": "Mounting, balancing, rotation, and repairs. We help you pick the right tire for how and where you actually drive."
+    },
+    {
+      "icon": "transmission",
+      "title": "Transmission Repair",
+      "image": "",
+      "description": "Fluid services, diagnostics, and repair for automatic and manual transmissions — shifting problems sorted out properly."
+    },
+    {
+      "icon": "suspension",
+      "title": "Suspension & Steering",
+      "image": "",
+      "description": "Struts, shocks, control arms, tie rods, and alignment-related repairs to bring back a smooth, straight ride."
+    },
+    {
+      "icon": "snowflake",
+      "title": "A/C & Heating",
+      "image": "",
+      "description": "Recharge, leak detection, compressor and blower repair — comfortable in a Tennessee summer and a January morning."
+    },
+    {
+      "icon": "dots",
+      "title": "And More",
+      "image": "",
+      "description": "Batteries, starters, alternators, belts, hoses, water pumps, timing components, and pre-purchase inspections. Just ask."
+    }
+  ]
+}
