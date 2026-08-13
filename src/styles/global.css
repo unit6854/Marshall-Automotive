@@ -1199,6 +1199,14 @@ p:last-child { margin-bottom: 0; }
   color: #d5d8d2;
 }
 
+/* solid black separator bar between the home page bands */
+.band-sep {
+  height: 30px;
+  background: #000;
+  border: 0;
+  margin: 0;
+}
+
 /* ---------- coded honeycomb page backdrop ---------- */
 
 .hex-page {
