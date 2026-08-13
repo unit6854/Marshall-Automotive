@@ -57,5 +57,43 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <script>
+      // Cards tilt toward the cursor and light up under it.
+      const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (fine && !still) {
+        const MAX_Y = 9; // deg, left/right
+        const MAX_X = 7; // deg, up/down
+
+        document.querySelectorAll<HTMLElement>('.tilt').forEach((card) => {
+          let frame = 0;
+
+          card.addEventListener('pointermove', (e) => {
+            if (frame) return;
+            frame = requestAnimationFrame(() => {
+              frame = 0;
+              const r = card.getBoundingClientRect();
+              const px = (e.clientX - r.left) / r.width;
+              const py = (e.clientY - r.top) / r.height;
+              card.classList.add('is-tilting');
+              card.style.setProperty('--ry', `${(px - 0.5) * 2 * MAX_Y}deg`);
+              card.style.setProperty('--rx', `${(0.5 - py) * 2 * MAX_X}deg`);
+              card.style.setProperty('--mx', `${px * 100}%`);
+              card.style.setProperty('--my', `${py * 100}%`);
+            });
+          });
+
+          card.addEventListener('pointerleave', () => {
+            card.classList.remove('is-tilting');
+            card.style.setProperty('--ry', '0deg');
+            card.style.setProperty('--rx', '0deg');
+            card.style.setProperty('--mx', '50%');
+            card.style.setProperty('--my', '50%');
+          });
+        });
+      }
+    </script>
   </body>
 </html>

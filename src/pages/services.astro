@@ -22,7 +22,8 @@ import home from '../data/home.json';
       <div class="grid-2" style="align-items:stretch; grid-template-columns:1fr 1fr;">
         {
           servicesData.services.map((s) => (
-            <article class="service-detail">
+            <article class="service-detail tilt">
+              <span class="glow" aria-hidden="true"></span>
               <Hex icon={s.icon} size={26} />
               <div>
                 <h3>{s.title}</h3>

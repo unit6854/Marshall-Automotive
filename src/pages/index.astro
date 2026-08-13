@@ -69,7 +69,8 @@ const services = servicesData.services.slice(0, 8);
       <div class="service-grid">
         {
           services.map((s) => (
-            <a class="service-card" href="/services">
+            <a class="service-card tilt" href="/services">
+              <span class="glow" aria-hidden="true"></span>
               {s.image && <img class="card-img" src={s.image} alt="" loading="lazy" />}
               <span class="service-card-label">
                 <Hex icon={s.icon} size={26} />
