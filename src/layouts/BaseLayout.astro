@@ -21,9 +21,21 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site ?? 'https://marshallsautomotive.netlify.app')} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={settings.business_name} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site ?? 'https://marshallsautomotive.netlify.app')} />
+    <meta property="og:image" content={new URL('/og.png', Astro.site ?? 'https://marshallsautomotive.netlify.app')} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${settings.business_name} - auto repair in Hermitage, TN`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/og.png', Astro.site ?? 'https://marshallsautomotive.netlify.app')} />
+    <meta name="theme-color" content="#76b01a" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

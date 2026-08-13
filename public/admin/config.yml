@@ -3,9 +3,9 @@ backend:
   repo: unit6854/Marshall-Automotive
   branch: main
 
-# `npx decap-server` + `npm run dev`, then visit http://localhost:4321/admin/
-# to edit content locally without logging in. Set to false before going live.
-local_backend: true
+# Set to true (plus `npx decap-server` alongside `npm run dev`) to edit content at
+# http://localhost:4321/admin/ without logging in. Must stay false on the live site.
+local_backend: false
 
 media_folder: "public/images"
 public_folder: "/images"
