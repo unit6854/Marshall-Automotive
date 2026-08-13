@@ -85,8 +85,10 @@ Then open <http://localhost:4321/admin/>. Set `local_backend: false` before goin
 
 ## Notes
 
-- All large imagery is WebP at quality 100 (logo is lossless WebP).
-- Service card thumbnails are intentionally blank — add images per service in the CMS
-  (`Pages → Services Page → Thumbnail Image`) when the shop photos are available.
+- Every image on the site is WebP at quality 100 (the logo is lossless WebP). Sources live
+  in `../Images` and `../Images/Thumbs`; run `node scripts/convert-images.mjs` to rebuild.
+- Service card thumbnails are cropped to the card ratio at 800x664 (2x for the ~280px
+  card) and share one dark grayscale treatment in CSS so the set reads consistently.
+  Swap any of them in the CMS under `Pages → Services Page → Thumbnail Image`.
 - The contact page embeds a Google Maps iframe; remove it if any third-party request is
   unwanted for the pitch.

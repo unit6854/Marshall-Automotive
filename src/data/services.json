@@ -1,54 +1,54 @@
 {
   "title": "Our Services",
   "intro": "Complete automotive care for every mile ahead. From routine maintenance to complex diagnostics, Marshall Automotive LLC keeps Hermitage on the road.",
-  "background_image": "/images/metal-grid.png",
+  "background_image": "/images/metal-grid.webp",
   "services": [
     {
       "icon": "engine",
       "title": "Engine Diagnostics",
-      "image": "",
+      "image": "/images/engine-diagnostics.webp",
       "description": "Check engine light on? We pull the codes, test the systems, and explain exactly what your vehicle needs — no guesswork, no upselling."
     },
     {
       "icon": "brake",
       "title": "Brake Service",
-      "image": "",
+      "image": "/images/brake-service.webp",
       "description": "Pads, rotors, calipers, lines, and fluid. We inspect the full braking system and only replace what is genuinely worn."
     },
     {
       "icon": "oil",
       "title": "Oil Changes",
-      "image": "",
+      "image": "/images/oil-changes.webp",
       "description": "Conventional, blend, or full synthetic with a quality filter, plus a courtesy inspection of belts, hoses, and fluid levels."
     },
     {
       "icon": "tire",
       "title": "Tires & Wheels",
-      "image": "",
+      "image": "/images/tires-wheels.webp",
       "description": "Mounting, balancing, rotation, and repairs. We help you pick the right tire for how and where you actually drive."
     },
     {
       "icon": "transmission",
       "title": "Transmission Repair",
-      "image": "",
+      "image": "/images/transmission-repair.webp",
       "description": "Fluid services, diagnostics, and repair for automatic and manual transmissions — shifting problems sorted out properly."
     },
     {
       "icon": "suspension",
       "title": "Suspension & Steering",
-      "image": "",
+      "image": "/images/suspension-steering.webp",
       "description": "Struts, shocks, control arms, tie rods, and alignment-related repairs to bring back a smooth, straight ride."
     },
     {
       "icon": "snowflake",
       "title": "A/C & Heating",
-      "image": "",
+      "image": "/images/ac-heating.webp",
       "description": "Recharge, leak detection, compressor and blower repair — comfortable in a Tennessee summer and a January morning."
     },
     {
       "icon": "dots",
       "title": "And More",
-      "image": "",
+      "image": "/images/and-more.webp",
       "description": "Batteries, starters, alternators, belts, hoses, water pumps, timing components, and pre-purchase inspections. Just ask."
     }
   ]
