@@ -19,7 +19,7 @@ const chrome = spawn(CHROME, [
   `--user-data-dir=${userDir}`,
   '--no-first-run',
   '--no-default-browser-check',
-  '--hide-scrollbars',
+  ...(fullPage ? ['--hide-scrollbars'] : []),
   '--force-device-scale-factor=1',
   `--window-size=${width},${height}`,
   'about:blank',
