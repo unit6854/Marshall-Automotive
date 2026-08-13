@@ -1271,6 +1271,11 @@ p:last-child { margin-bottom: 0; }
 .hex-page h1,
 .hex-page h2,
 .hex-page .eyebrow { text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85); }
+.hex-page .review-card,
+.hex-page .badge {
+  background: rgba(10, 10, 10, 0.78);
+  backdrop-filter: blur(4px);
+}
 .hex-page .field input,
 .hex-page .field select,
 .hex-page .field textarea { background: rgba(6, 6, 6, 0.78); }
