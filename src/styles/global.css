@@ -1200,14 +1200,14 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* textured band (diamond plate behind "What We Stand For") */
-.values-band {
+.plate-band {
   position: relative;
   background: #080808;
   overflow: hidden;
   border-top: 1px solid rgba(118, 176, 26, 0.2);
   border-bottom: 1px solid rgba(118, 176, 26, 0.2);
 }
-.values-band .band-bg {
+.plate-band .band-bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1216,7 +1216,7 @@ p:last-child { margin-bottom: 0; }
   filter: grayscale(1) brightness(0.55) contrast(1.15);
 }
 /* dark shade + vignette so the copy stays readable */
-.values-band::after {
+.plate-band::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -1224,8 +1224,8 @@ p:last-child { margin-bottom: 0; }
     radial-gradient(115% 85% at 50% 45%, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.55) 55%, rgba(0, 0, 0, 0.95) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.38) 45%, rgba(0, 0, 0, 0.66) 100%);
 }
-.values-band > .container { position: relative; z-index: 2; }
-.values-band .service-detail { background: linear-gradient(180deg, rgba(20, 20, 20, 0.82) 0%, rgba(10, 10, 10, 0.88) 100%); }
+.plate-band > .container { position: relative; z-index: 2; }
+.plate-band .service-detail { background: linear-gradient(180deg, rgba(20, 20, 20, 0.82) 0%, rgba(10, 10, 10, 0.88) 100%); }
 
 /* FAQ */
 .faq-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }

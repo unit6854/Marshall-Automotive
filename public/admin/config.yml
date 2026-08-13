@@ -128,6 +128,7 @@ collections:
         fields:
           - { name: title, label: Title, widget: string }
           - { name: intro, label: Intro, widget: text }
+          - { name: background_image, label: "Services Section Background", widget: image }
           - name: services
             label: "Services"
             widget: list

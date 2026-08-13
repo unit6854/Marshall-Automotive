@@ -1,6 +1,7 @@
 {
   "title": "Our Services",
   "intro": "Complete automotive care for every mile ahead. From routine maintenance to complex diagnostics, Marshall Automotive LLC keeps Hermitage on the road.",
+  "background_image": "/images/metal-grid.png",
   "services": [
     {
       "icon": "engine",
