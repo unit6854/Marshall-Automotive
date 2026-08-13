@@ -1271,6 +1271,10 @@ p:last-child { margin-bottom: 0; }
 .hex-page h1,
 .hex-page h2,
 .hex-page .eyebrow { text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85); }
+.hex-page .service-card {
+  background: linear-gradient(180deg, rgba(24, 24, 24, 0.72) 0%, rgba(10, 10, 10, 0.82) 100%);
+  backdrop-filter: blur(3px);
+}
 .hex-page .review-card,
 .hex-page .badge {
   background: rgba(10, 10, 10, 0.78);

@@ -4,6 +4,7 @@ import Icon from '../components/Icon.astro';
 import Hex from '../components/Hex.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CtaBand from '../components/CtaBand.astro';
+import HexBackdrop from '../components/HexBackdrop.astro';
 import settings from '../data/settings.json';
 import home from '../data/home.json';
 import servicesData from '../data/services.json';
@@ -53,7 +54,8 @@ const services = servicesData.services.slice(0, 8);
   </section>
 
   <!-- ================= SERVICES ================= -->
-  <section class="section services">
+  <section class="section services hex-page">
+    <HexBackdrop />
     <div class="container">
       <div class="section-head">
         <div>
