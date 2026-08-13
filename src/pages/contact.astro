@@ -3,13 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import FaqList from '../components/FaqList.astro';
 import CtaBand from '../components/CtaBand.astro';
+import HexBackdrop from '../components/HexBackdrop.astro';
 import settings from '../data/settings.json';
 import contact from '../data/contact.json';
 import home from '../data/home.json';
 ---
 
 <BaseLayout title="Contact | Marshall Automotive LLC" description="Call 615-732-1894 or visit Marshall Automotive LLC at 4235 Lebanon Pike, Hermitage, TN 37076.">
-  <section class="page-hero" style={`background-image:url('${home.hero_image}')`}>
+<div class="hex-page">
+  <HexBackdrop />
+
+  <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Get In Touch</p>
       <h1>{contact.title}</h1>
@@ -78,7 +82,7 @@ import home from '../data/home.json';
     </div>
   </section>
 
-  <section class="section section--tight" style="background:#0a0a0a;">
+  <section class="section section--tight">
     <div class="container">
       <h2 style="font-size:clamp(1.6rem,2.6vw,2.2rem)">Frequently Asked Questions</h2>
       <div class="rule"></div>
@@ -87,4 +91,5 @@ import home from '../data/home.json';
   </section>
 
   <CtaBand />
+</div>
 </BaseLayout>

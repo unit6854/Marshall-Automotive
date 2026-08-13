@@ -1199,6 +1199,69 @@ p:last-child { margin-bottom: 0; }
   color: #d5d8d2;
 }
 
+/* ---------- coded honeycomb page backdrop ---------- */
+
+.hex-page {
+  position: relative;
+  background: #040404;
+  isolation: isolate;
+}
+.hex-page > *:not(.hex-backdrop) { position: relative; z-index: 1; }
+
+.hex-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hex-backdrop svg { width: 100%; height: 100%; display: block; }
+
+/* mesh wire */
+.hex-cell {
+  fill: none;
+  stroke: rgba(202, 214, 196, 0.22);
+  stroke-width: 0.9;
+}
+
+/* flat shade knocks the mesh back */
+.hex-shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* vignette: readable in the middle, near-black at every edge */
+.hex-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(105% 68% at 50% 42%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 58%, rgba(0, 0, 0, 0.9) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.16) 8%, rgba(0, 0, 0, 0.16) 92%, rgba(0, 0, 0, 0.85) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 24%, rgba(0, 0, 0, 0) 76%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+/* panels, forms and bands float over the mesh instead of hiding it */
+.hex-page .panel {
+  background: rgba(13, 13, 13, 0.74);
+  backdrop-filter: blur(3px);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+.hex-page .section,
+.hex-page .section--tight { background: transparent !important; }
+.hex-page .page-hero {
+  background-image: none !important;
+  border-bottom-color: rgba(118, 176, 26, 0.3);
+}
+.hex-page .page-hero::after { background: none; }
+.hex-page .cta-band { background-image: none !important; }
+.hex-page .cta-band::before { background: rgba(0, 0, 0, 0.35); }
+.hex-page .cta-box { background: rgba(6, 8, 4, 0.72); backdrop-filter: blur(3px); }
+.hex-page .faq-item { border-bottom-color: rgba(255, 255, 255, 0.12); }
+.hex-page .field input,
+.hex-page .field select,
+.hex-page .field textarea { background: rgba(6, 6, 6, 0.78); }
+
 /* textured band (diamond plate behind "What We Stand For") */
 .plate-band {
   position: relative;
