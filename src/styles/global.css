@@ -1257,7 +1257,20 @@ p:last-child { margin-bottom: 0; }
 .hex-page .cta-band { background-image: none !important; }
 .hex-page .cta-band::before { background: rgba(0, 0, 0, 0.35); }
 .hex-page .cta-box { background: rgba(6, 8, 4, 0.72); backdrop-filter: blur(3px); }
+/* FAQ copy gets its own dark slab so it stays legible over the mesh */
+.hex-page .faq {
+  background: rgba(5, 5, 5, 0.76);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-left: 3px solid var(--green);
+  padding: 4px clamp(20px, 2.6vw, 32px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
 .hex-page .faq-item { border-bottom-color: rgba(255, 255, 255, 0.12); }
+.hex-page .faq-item:last-child { border-bottom: 0; }
+.hex-page h1,
+.hex-page h2,
+.hex-page .eyebrow { text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85); }
 .hex-page .field input,
 .hex-page .field select,
 .hex-page .field textarea { background: rgba(6, 6, 6, 0.78); }
