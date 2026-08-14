@@ -354,13 +354,14 @@ p:last-child { margin-bottom: 0; }
   z-index: 3;
 }
 /* The logo file carries ~20% transparent space above the wordmark and ~18%
-   below it. These negative margins crop that dead space out of the layout box
-   (the artwork itself is untouched) so the city line sits right under the
-   wordmark instead of under a band of nothing. */
+   below it. The bottom of that dead space is cropped away with a negative
+   margin (the artwork itself is untouched) so the city line sits right under
+   the wordmark; ~13px of the top space is kept as breathing room so the
+   wordmark isn't jammed against the top edge of the bar. */
 .brand img {
   height: 72px;
   width: auto;
-  margin-block: -14px -13px;
+  margin-block: -1px -13px;
 }
 .brand-city {
   padding-left: 15%;
@@ -372,8 +373,17 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.78rem;
   color: var(--green-lt);
 }
-/* header only - the footer's copy of this line keeps its roomier leading */
-.brand .brand-city { line-height: 1.1; }
+/* Header only - the footer's copy of this line keeps its roomier leading and
+   its own alignment. The word "MARSHALL" occupies 2%-60% of the logo's width
+   (measured off the artwork), so a 62%-wide centred box lands this line on
+   that word's centre rather than the whole lockup's. */
+.brand .brand-city {
+  line-height: 1.1;
+  font-size: 0.546rem;
+  width: 62%;
+  padding-left: 0;
+  text-align: center;
+}
 
 /* angled lit panel behind the nav */
 .nav-panel {
@@ -504,6 +514,59 @@ p:last-child { margin-bottom: 0; }
   color: var(--white);
   display: block;
   line-height: 1.1;
+}
+
+/* On full desktop the phone CTA stops being a pill floating on the nav panel
+   and becomes the panel's last segment: full bar height, bleeding off the
+   right edge, fronted by the same -20deg lit diagonal that divides the logo
+   from the nav (.brand-cut). Only the skewed backdrop is transformed, so the
+   label and number stay upright. */
+@media (min-width: 961px) {
+  /* Both the nav panel and this segment deliberately bleed past the right edge;
+     clip them here so that overhang can't push the page into horizontal scroll.
+     `clip` rather than `hidden` so no scroll container is created and the
+     sticky header keeps behaving. Safe at this width - the drop-down nav that
+     escapes the header only exists below 960px. */
+  .site-header { overflow-x: clip; }
+
+  .call-btn {
+    align-self: stretch;
+    isolation: isolate;
+    gap: 14px;
+    /* the negative right margin cancels .header-inner's padding so the
+       segment runs to the edge of the screen */
+    margin-right: calc(-1 * clamp(18px, 2vw, 26px));
+    padding: 0 clamp(18px, 2vw, 26px) 0 42px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    transition: color 0.25s ease;
+  }
+  .call-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0 -420px 0 0;
+    z-index: -1;
+    background: linear-gradient(100deg, rgba(47, 255, 0, 0.16) 0%, rgba(47, 255, 0, 0.05) 55%, rgba(47, 255, 0, 0.02) 100%);
+    border-left: 1px solid var(--green);
+    box-shadow: 0 0 14px var(--green-glow);
+    transform: skewX(-20deg);
+    transform-origin: bottom left;
+    transition: background 0.28s ease;
+  }
+  .call-btn:hover,
+  .call-btn:focus-visible {
+    /* stays seated in the bar - no lift, no ring of glow */
+    transform: none;
+    box-shadow: none;
+    background: none;
+  }
+  .call-btn:hover::before,
+  .call-btn:focus-visible::before {
+    background: linear-gradient(100deg, rgba(47, 255, 0, 0.34) 0%, rgba(47, 255, 0, 0.14) 55%, rgba(47, 255, 0, 0.05) 100%);
+  }
+  .call-btn:active { transform: none; }
 }
 
 .nav-toggle {
@@ -1641,9 +1704,11 @@ p:last-child { margin-bottom: 0; }
   .hero h1 { font-size: clamp(4.05rem, 8.64vw, 5.6rem); }
 
   .header-inner { padding-inline: 16px; gap: 8px; }
-  /* same dead-space crop as desktop, scaled to the smaller logo */
-  .brand img { height: 62px; margin-block: -12px -11px; }
-  .brand-city { font-size: 0.66rem; letter-spacing: 0.14em; }
+  /* 20% smaller than desktop's mobile size; the logo's own top space is only
+     ~10px at this scale, so a small positive margin makes up the 13px gap */
+  .brand img { height: 50px; margin-block: 3px -9px; }
+  .brand-city { letter-spacing: 0.14em; }
+  .brand .brand-city { font-size: 0.462rem; }
   .call-btn { padding: 8px 12px; }
   .call-btn .call-number { font-size: 1rem; }
   .service-grid { grid-template-columns: 1fr; }
