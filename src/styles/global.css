@@ -29,7 +29,7 @@
   --font-script: 'Dancing Script', cursive;
 
   --container: 1220px;
-  --header-h: 88px;
+  --header-h: 60px;
 }
 
 *,
@@ -353,9 +353,15 @@ p:last-child { margin-bottom: 0; }
   position: relative;
   z-index: 3;
 }
-/* logo grows into the padding it used to sit in, so it closes on the city
-   line without pushing the header any taller than it already was */
-.brand img { height: 72px; width: auto; }
+/* The logo file carries ~20% transparent space above the wordmark and ~18%
+   below it. These negative margins crop that dead space out of the layout box
+   (the artwork itself is untouched) so the city line sits right under the
+   wordmark instead of under a band of nothing. */
+.brand img {
+  height: 72px;
+  width: auto;
+  margin-block: -14px -13px;
+}
 .brand-city {
   padding-left: 15%;
   font-family: var(--font-display);
@@ -366,6 +372,8 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.78rem;
   color: var(--green-lt);
 }
+/* header only - the footer's copy of this line keeps its roomier leading */
+.brand .brand-city { line-height: 1.1; }
 
 /* angled lit panel behind the nav */
 .nav-panel {
@@ -1589,7 +1597,12 @@ p:last-child { margin-bottom: 0; }
 }
 
 @media (max-width: 620px) {
-  :root { --header-h: 84px; }
+  :root { --header-h: 52px; }
+
+  /* The phone CTA lives in the fixed .mobile-call bar at the bottom of the
+     screen on phones, so the header copy of it is redundant here - dropping it
+     frees the width the enlarged logo needs to stay on one line. */
+  .call-btn { display: none; }
 
   /* taller hero + bottom-anchored copy so the paragraph/button clear the busy
      lower part of the photo, backed by an extra scrim regardless of crop */
@@ -1628,7 +1641,8 @@ p:last-child { margin-bottom: 0; }
   .hero h1 { font-size: clamp(4.05rem, 8.64vw, 5.6rem); }
 
   .header-inner { padding-inline: 16px; gap: 8px; }
-  .brand img { height: 62px; }
+  /* same dead-space crop as desktop, scaled to the smaller logo */
+  .brand img { height: 62px; margin-block: -12px -11px; }
   .brand-city { font-size: 0.66rem; letter-spacing: 0.14em; }
   .call-btn { padding: 8px 12px; }
   .call-btn .call-number { font-size: 1rem; }
