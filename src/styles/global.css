@@ -359,9 +359,9 @@ p:last-child { margin-bottom: 0; }
    the wordmark; ~13px of the top space is kept as breathing room so the
    wordmark isn't jammed against the top edge of the bar. */
 .brand img {
-  height: 72px;
+  height: 86px;
   width: auto;
-  margin-block: -1px -13px;
+  margin-block: -4px -16px;
 }
 .brand-city {
   padding-left: 15%;
@@ -374,15 +374,15 @@ p:last-child { margin-bottom: 0; }
   color: var(--green-lt);
 }
 /* Header only - the footer's copy of this line keeps its roomier leading and
-   its own alignment. The word "MARSHALL" occupies 2%-60% of the logo's width
-   (measured off the artwork), so a 62%-wide centred box lands this line on
-   that word's centre rather than the whole lockup's. */
+   its own alignment. Glyph positions measured off the artwork: the big "M"
+   runs 1.6%-26.6% of the image width and the first "A" starts at 27.0%, so
+   indenting this line by 27% drops its "H" directly under that "A". Keeping it
+   a percentage means the alignment survives any future logo resize. */
 .brand .brand-city {
   line-height: 1.1;
-  font-size: 0.546rem;
-  width: 62%;
-  padding-left: 0;
-  text-align: center;
+  font-size: 0.6552rem;
+  padding-left: 27%;
+  text-align: left;
 }
 
 /* angled lit panel behind the nav */
@@ -1704,11 +1704,11 @@ p:last-child { margin-bottom: 0; }
   .hero h1 { font-size: clamp(4.05rem, 8.64vw, 5.6rem); }
 
   .header-inner { padding-inline: 16px; gap: 8px; }
-  /* 20% smaller than desktop's mobile size; the logo's own top space is only
-     ~10px at this scale, so a small positive margin makes up the 13px gap */
-  .brand img { height: 50px; margin-block: 3px -9px; }
+  /* the logo's own top space is only ~12px at this scale, so a small positive
+     margin makes up the 13px of breathing room above the wordmark */
+  .brand img { height: 60px; margin-block: 1px -11px; }
   .brand-city { letter-spacing: 0.14em; }
-  .brand .brand-city { font-size: 0.462rem; }
+  .brand .brand-city { font-size: 0.5544rem; }
   .call-btn { padding: 8px 12px; }
   .call-btn .call-number { font-size: 1rem; }
   .service-grid { grid-template-columns: 1fr; }
