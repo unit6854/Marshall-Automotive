@@ -215,13 +215,11 @@ p:last-child { margin-bottom: 0; }
 
 /* white label sitting straight on the lime fill gets a black halo to hold its edge */
 .btn--solid,
-.btn-skew--solid,
-.mobile-call {
+.btn-skew--solid {
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.85), 0 0 16px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 .btn--solid .btn-arrow svg,
-.btn-skew--solid svg,
-.mobile-call svg {
+.btn-skew--solid svg {
   filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.8)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
 }
 /* the outline CTA keeps white text while its lime fill wipes in on hover */
@@ -545,29 +543,31 @@ p:last-child { margin-bottom: 0; }
   margin: 14px 0 0;
   text-shadow: 0 6px 26px rgba(0, 0, 0, 0.75);
 }
-/* accent word cycles pale -> mid green -> deep green, like the adlogic hero */
+/* electric shine: a hot spark band races side to side across a dark-to-lime
+   base - the drama comes from color contrast + motion, not a pulsing blur,
+   so the glow behind it stays fixed instead of breathing */
 @keyframes hero-word-gradient {
-  0% { background-position: 0% 50%; }
+  0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 .hero h1 .line-2 {
   display: block;
   color: var(--green);
   background: linear-gradient(
-    90deg,
-    #eaffe2 0%,
-    #9bff86 18%,
-    var(--green) 40%,
-    #1eb400 62%,
-    #9bff86 82%,
-    #eaffe2 100%
+    100deg,
+    var(--green-dk) 0%,
+    var(--green) 24%,
+    var(--green) 42%,
+    #eaffb0 50%,
+    var(--green) 58%,
+    var(--green) 76%,
+    var(--green-dk) 100%
   );
-  background-size: 300%;
+  background-size: 320% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hero-word-gradient 5s ease-in-out infinite;
+  animation: hero-word-gradient 2.6s ease-in-out infinite;
 }
 
 .hero-copy {
@@ -575,6 +575,7 @@ p:last-child { margin-bottom: 0; }
   font-size: clamp(1rem, 1.25vw, 1.15rem);
   color: #e3e6e1;
   max-width: 30ch;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 22px rgba(0, 0, 0, 0.75), 0 2px 4px rgba(0, 0, 0, 0.85);
 }
 .hero-copy span { display: block; }
 
@@ -1502,13 +1503,18 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 14px;
+  padding: 4px 14px;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.12rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   box-shadow: 0 -6px 22px rgba(0, 0, 0, 0.5);
+  /* stronger halo than the other solid-green buttons - this one sits over a busy page edge */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.95), 0 0 22px rgba(0, 0, 0, 0.8), 0 2px 3px rgba(0, 0, 0, 0.9);
+}
+.mobile-call svg {
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.9)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
 }
 
 /* ---------- motion preferences ---------- */
@@ -1582,6 +1588,41 @@ p:last-child { margin-bottom: 0; }
 
 @media (max-width: 620px) {
   :root { --header-h: 84px; }
+
+  /* taller hero + bottom-anchored copy so the paragraph/button clear the busy
+     lower part of the photo, backed by an extra scrim regardless of crop */
+  .hero {
+    min-height: 600px;
+    align-items: stretch;
+    /* pull back from the tight cover crop so the car reads ~15% smaller */
+    background-size: 210% auto;
+    background-position: center;
+  }
+  .hero::after {
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.7) 26%, rgba(0, 0, 0, 0.18) 48%, rgba(0, 0, 0, 0) 66%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.7) 100%);
+  }
+  /* headline sits with clear air below the header; the auto margin below
+     shoves the copy + button down to the bottom as their own group */
+  .hero > .container {
+    display: flex;
+    padding-block: 64px 21px;
+  }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-copy {
+    margin-top: auto;
+    padding-top: 42px;
+  }
+  /* button holds its position while the paragraph above it shifts down */
+  .hero .btn { margin-top: 10px; }
+  /* 35% larger than the base clamp - same top position, just bigger letters */
+  .hero h1 { font-size: clamp(4.05rem, 8.64vw, 5.6rem); }
+
   .header-inner { padding-inline: 16px; gap: 8px; }
   .brand img { height: 48px; }
   .brand-city { font-size: 0.66rem; letter-spacing: 0.14em; }
