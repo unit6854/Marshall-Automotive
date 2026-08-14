@@ -71,6 +71,9 @@ const year = new Date().getFullYear();
 </footer>
 
 <a class="mobile-call" href={settings.phone_link}>
-  <Icon name="phone" size={20} />
-  <span>Call {settings.phone}</span>
+  <span class="mobile-call-icon"><Icon name="phone" size={16} /></span>
+  <span class="mobile-call-text">
+    <span class="mobile-call-label">Call Us Now</span>
+    <span class="mobile-call-number">{settings.phone}</span>
+  </span>
 </a>
