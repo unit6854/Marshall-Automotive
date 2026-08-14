@@ -348,12 +348,14 @@ p:last-child { margin-bottom: 0; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2px;
-  padding: 6px 0;
+  gap: 0;
+  padding: 0;
   position: relative;
   z-index: 3;
 }
-.brand img { height: 58px; width: auto; }
+/* logo grows into the padding it used to sit in, so it closes on the city
+   line without pushing the header any taller than it already was */
+.brand img { height: 72px; width: auto; }
 .brand-city {
   padding-left: 15%;
   font-family: var(--font-display);
@@ -1594,8 +1596,10 @@ p:last-child { margin-bottom: 0; }
   .hero {
     min-height: 600px;
     align-items: stretch;
-    /* pull back from the tight cover crop so the car reads ~15% smaller */
-    background-size: 210% auto;
+    /* square crop shot for portrait screens - !important beats the inline
+       background-image the page sets from home.json, so only this one loads here */
+    background-image: url('/images/hero-bg-mobile.webp') !important;
+    background-size: cover;
     background-position: center;
   }
   .hero::after {
@@ -1624,7 +1628,7 @@ p:last-child { margin-bottom: 0; }
   .hero h1 { font-size: clamp(4.05rem, 8.64vw, 5.6rem); }
 
   .header-inner { padding-inline: 16px; gap: 8px; }
-  .brand img { height: 48px; }
+  .brand img { height: 62px; }
   .brand-city { font-size: 0.66rem; letter-spacing: 0.14em; }
   .call-btn { padding: 8px 12px; }
   .call-btn .call-number { font-size: 1rem; }

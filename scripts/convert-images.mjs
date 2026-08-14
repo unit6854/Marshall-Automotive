@@ -29,6 +29,8 @@ const thumbs = [
 // [source, output, max width (0 = keep native), webp options]
 const large = [
   ['Hero BG.png', 'hero-bg.webp', 1920, Q],
+  // square crop of the hero, used only under the mobile breakpoint
+  ['MOBILE hero bg.png', 'hero-bg-mobile.webp', 1254, Q],
   ['Engine work.png', 'engine-work.webp', 1600, Q],
   ['SS Grille2.jpg', 'ss-grille.webp', 1600, Q],
   ['metal grid.png', 'metal-grid.webp', 1600, Q],
