@@ -342,6 +342,8 @@ p:last-child { margin-bottom: 0; }
   max-width: 1520px;
   margin-inline: auto;
   padding-inline: 26px;
+  /* a sliver of black under the city line so it isn't sitting on the bar's edge */
+  padding-bottom: 5px;
 }
 
 .brand {
@@ -516,57 +518,77 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.1;
 }
 
-/* On full desktop the phone CTA stops being a pill floating on the nav panel
-   and becomes the panel's last segment: full bar height, bleeding off the
-   right edge, fronted by the same -20deg lit diagonal that divides the logo
-   from the nav (.brand-cut). Only the skewed backdrop is transformed, so the
-   label and number stay upright. */
+/* On full desktop the phone CTA carries no box at all - no fill, no border, no
+   glow. A filled block here fought the hero for attention and read as a slab
+   pasted over the nav panel. Instead it earns its weight through type: a lit
+   hairline separates it from the links (the same hairline vocabulary as
+   .brand-cut), the number sits in the display face, and hovering wipes in the
+   same underline the nav links use. It reads as the last item in the nav
+   rather than an object sitting on top of it. */
 @media (min-width: 961px) {
-  /* Both the nav panel and this segment deliberately bleed past the right edge;
-     clip them here so that overhang can't push the page into horizontal scroll.
-     `clip` rather than `hidden` so no scroll container is created and the
-     sticky header keeps behaving. Safe at this width - the drop-down nav that
-     escapes the header only exists below 960px. */
+  /* The nav panel deliberately bleeds past the right edge; clip it here so the
+     overhang can't push the page into horizontal scroll. `clip` rather than
+     `hidden` so no scroll container is created and the sticky header keeps
+     behaving. Safe at this width - the drop-down nav that escapes the header
+     only exists below 960px. */
   .site-header { overflow-x: clip; }
 
   .call-btn {
-    align-self: stretch;
-    isolation: isolate;
-    gap: 14px;
-    /* the negative right margin cancels .header-inner's padding so the
-       segment runs to the edge of the screen */
-    margin-right: calc(-1 * clamp(18px, 2vw, 26px));
-    padding: 0 clamp(18px, 2vw, 26px) 0 42px;
+    align-self: center;
+    gap: 13px;
+    margin-left: clamp(10px, 1.4vw, 22px);
+    padding: 4px 2px 6px 24px;
     border: 0;
     border-radius: 0;
     background: none;
     box-shadow: none;
-    transition: color 0.25s ease;
+    transition: none;
   }
+  /* lit hairline divider, faded at both ends so it reads as a rule, not a bar */
   .call-btn::before {
     content: '';
     position: absolute;
-    inset: 0 -420px 0 0;
-    z-index: -1;
-    background: linear-gradient(100deg, rgba(47, 255, 0, 0.16) 0%, rgba(47, 255, 0, 0.05) 55%, rgba(47, 255, 0, 0.02) 100%);
-    border-left: 1px solid var(--green);
-    box-shadow: 0 0 14px var(--green-glow);
-    transform: skewX(-20deg);
-    transform-origin: bottom left;
-    transition: background 0.28s ease;
+    left: 0;
+    top: 50%;
+    translate: 0 -50%;
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(180deg, transparent 0%, var(--green) 22%, var(--green) 78%, transparent 100%);
+    box-shadow: 0 0 7px var(--green-glow);
+    opacity: 0.75;
+  }
+  /* underline wipes in from the left, matching .main-nav a::after */
+  .call-btn::after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    right: 2px;
+    bottom: 0;
+    height: 2px;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green-glow);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
   }
   .call-btn:hover,
   .call-btn:focus-visible {
-    /* stays seated in the bar - no lift, no ring of glow */
+    /* nothing lifts or lights up behind it - the underline does the talking */
     transform: none;
     box-shadow: none;
     background: none;
   }
-  .call-btn:hover::before,
-  .call-btn:focus-visible::before {
-    background: linear-gradient(100deg, rgba(47, 255, 0, 0.34) 0%, rgba(47, 255, 0, 0.14) 55%, rgba(47, 255, 0, 0.05) 100%);
-  }
+  .call-btn:hover::after,
+  .call-btn:focus-visible::after { transform: scaleX(1); }
+  .call-btn:hover .call-number,
+  .call-btn:focus-visible .call-number { color: var(--green-lt); }
+  .call-btn:hover .call-label,
+  .call-btn:focus-visible .call-label { color: var(--green-lt); }
   .call-btn:active { transform: none; }
+
+  .call-btn .call-number,
+  .call-btn .call-label { transition: color 0.25s ease; }
+  .call-btn .call-number { font-size: 1.22rem; }
 }
 
 .nav-toggle {
