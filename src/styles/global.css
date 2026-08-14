@@ -1708,7 +1708,9 @@ p:last-child { margin-bottom: 0; }
      margin makes up the 13px of breathing room above the wordmark */
   .brand img { height: 60px; margin-block: 1px -11px; }
   .brand-city { letter-spacing: 0.14em; }
-  .brand .brand-city { font-size: 0.5544rem; }
+  /* pulled up into the space under the wrench tail so it tucks against the
+     wordmark's baseline rather than the artwork's lowest pixel */
+  .brand .brand-city { font-size: 0.5544rem; margin-top: -8px; }
   .call-btn { padding: 8px 12px; }
   .call-btn .call-number { font-size: 1rem; }
   .service-grid { grid-template-columns: 1fr; }
